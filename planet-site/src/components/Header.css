@@ -1,0 +1,67 @@
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 41px;
+}
+
+/* LOGO */
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+
+/* NAV */
+.navDiv {
+  display: flex;
+  gap: 24px;
+}
+
+.navDiv a {
+  text-decoration: none;
+}
+
+.navDiv button {
+  background: transparent;
+  border: none;
+  color: #cfd8dc;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.navDiv button:hover {
+  color: white;
+}
+
+.navDiv button::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+}
+
+.navDiv button:hover::after {
+  width: 100%;
+}
+
+/* BODY BACKGROUND */
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1503264116251-35a269479413");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
