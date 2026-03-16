@@ -57,33 +57,75 @@
   color: #f2f6f8;
   margin-bottom: 30px;
 }
-
-/* TABS */
+/* TABS - ჩაანაცვლე ძველი .tabs და .tabs button სტილები ამით */
 .tabs {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 30px;
 }
 
 .tabs button {
   background: transparent;
-  border: 1px solid #ffffff;
-  padding: 14px 20px;
-  color: rgba(255, 255, 255, 0.274);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 28px;
+  
+  /* ტექსტის გამკვეთრება */
+  color: #ffffff;
+  font-family: "League Spartan", sans-serif; /* თუ გაქვს ეს ფონტი */
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  
   cursor: pointer;
   text-align: left;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
 .tabs button:hover {
-  background-color: #ffffff;
+  background-color: rgba(211, 211, 211, 0.2);
+  border-color: transparent;
 }
 
 .tabs button.active {
-  background-color: #fcfafa00;
-  color: #ffffff;
+  /* JS-იდან გადმოეცემა planet.color */
+  border-color: transparent;
+}
+
+/* MOBILE RESPONSIVE - დაამატე ფაილის ბოლოში */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .tabs {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    order: -1; /* ტაბები ავა მაღლა */
+  }
+
+  .tabs button {
+    border: none;
+    padding: 20px 5px;
+    font-size: 10px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    width: auto;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .tabs button.active {
+    background-color: transparent !important; /* მობილურზე ფონი არ გვინდა */
+    color: #ffffff;
+    box-shadow: inset 0 -4px 0 0; /* ხაზი ქვემოთ (ფერი JS-ით) */
+  }
 }
 
 /* SOURCE */
@@ -121,4 +163,47 @@
 
 .stat strong {
   font-size: 28px;
+}
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .tabs {
+    flex-direction: row; /* ტაბები გვერდიგვერდ მობილურზე */
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 0;
+    order: -1; /* ტაბები ავა სურათის ზემოთ */
+  }
+
+  .tabs button {
+    border: none;
+    padding: 15px 5px;
+    font-size: 11px;
+  }
+
+  .planet-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .content h1 {
+    font-size: 40px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr; /* სტატისტიკა ერთ სვეტად */
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .stat {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
 }

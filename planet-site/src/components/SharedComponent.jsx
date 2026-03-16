@@ -1,13 +1,20 @@
-import { useState } from "react";
-import planets from "../assets/data.json";
+import { useState, useEffect } from "react";
+import planetsData from "../assets/data.json"; // დარწმუნდი, რომ გზა სწორია
 import "./SharedComponent.css";
 
 export default function SharedComponent({ pathname }) {
   const [select, setSelect] = useState(1);
 
-  const planet = planets.find(
-    (p) => p.name.toLowerCase() === pathname.toLowerCase()
-  ) || planets[0]; // თუ არ მოიძებნა, Mercury აჩვენოს
+  // როცა პლანეტა იცვლება, ტაბი დაბრუნდეს Overview-ზე (01)
+  useEffect(() => {
+    setSelect(1);
+  }, [pathname]);
+
+  const planet = planetsData.find(
+    (p) => p.name.toLowerCase() === pathname?.toLowerCase()
+  ) || planetsData[0];
+
+  if (!planet) return null;
 
   return (
     <div className="page">
@@ -42,13 +49,25 @@ export default function SharedComponent({ pathname }) {
           </div>
 
           <div className="tabs">
-            <button className={select === 1 ? "active" : ""} onClick={() => setSelect(1)}>
+            <button 
+              className={select === 1 ? "active" : ""} 
+              onClick={() => setSelect(1)}
+              style={select === 1 ? { backgroundColor: planet.color } : {}}
+            >
               01 OVERVIEW
             </button>
-            <button className={select === 2 ? "active" : ""} onClick={() => setSelect(2)}>
+            <button 
+              className={select === 2 ? "active" : ""} 
+              onClick={() => setSelect(2)}
+              style={select === 2 ? { backgroundColor: planet.color } : {}}
+            >
               02 STRUCTURE
             </button>
-            <button className={select === 3 ? "active" : ""} onClick={() => setSelect(3)}>
+            <button 
+              className={select === 3 ? "active" : ""} 
+              onClick={() => setSelect(3)}
+              style={select === 3 ? { backgroundColor: planet.color } : {}}
+            >
               03 SURFACE
             </button>
           </div>
